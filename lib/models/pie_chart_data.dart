@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class PieChartData {
+class PieData {
   static List<Data> data = [
     Data(
       name: 'Red',
