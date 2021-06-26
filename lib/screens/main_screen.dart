@@ -170,124 +170,36 @@ class _MainScreenState extends State<MainScreen> {
                 children: [
                   Row(
                     children: [
-                      Expanded(
-                        child: Card(
-                          elevation: 5,
-                          margin: EdgeInsets.all(15),
-                          child: InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => DashBoard(),
-                                ),
-                              );
-                            },
-                            splashColor: Colors.greenAccent,
-                            child: Center(
-                              child: Padding(
-                                padding: const EdgeInsets.all(16.0),
-                                child: Column(
-                                  children: [
-                                    Text('My DashBoard'),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Text(''),
-                                  ],
-                                ),
-                              ),
+                      myCard(
+                        'Dashboard',
+                        '',
+                        () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => DashBoard(),
                             ),
-                          ),
-                        ),
+                          );
+                        },
                       ),
-                      Expanded(
-                        child: Card(
-                          elevation: 5,
-                          margin: EdgeInsets.all(15),
-                          child: InkWell(
-                            onTap: () {},
-                            splashColor: Colors.greenAccent,
-                            child: Center(
-                              child: Padding(
-                                padding: const EdgeInsets.all(16.0),
-                                child: Column(
-                                  children: [
-                                    Text(
-                                      'Overall Stocks',
-                                      textAlign: TextAlign.center,
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Text(
-                                        '${Provider.of<ShareDataProvider>(context).shareDataCount}'),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
+                      myCard(
+                        'Overall Stocks',
+                        '${Provider.of<ShareDataProvider>(context).shareDataCount}',
+                        () {},
                       ),
                     ],
                   ),
                   Row(
                     children: [
-                      Expanded(
-                        child: Card(
-                          elevation: 5,
-                          margin: EdgeInsets.all(10),
-                          child: InkWell(
-                            onTap: () {},
-                            splashColor: Colors.greenAccent,
-                            child: Center(
-                              child: Padding(
-                                padding: const EdgeInsets.all(16.0),
-                                child: Column(
-                                  children: [
-                                    Text(
-                                      'Total Investment',
-                                      textAlign: TextAlign.center,
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Text(
-                                        'Rs. ${Provider.of<ShareDataProvider>(context).totalInvestment}'),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
+                      myCard(
+                        'Total Investment',
+                        'Rs. ${Provider.of<ShareDataProvider>(context).totalInvestment}',
+                        () {},
                       ),
-                      Expanded(
-                        child: Card(
-                          elevation: 5,
-                          margin: EdgeInsets.all(10),
-                          child: InkWell(
-                            onTap: () {},
-                            splashColor: Colors.greenAccent,
-                            child: Center(
-                              child: Padding(
-                                padding: const EdgeInsets.all(16.0),
-                                child: Column(
-                                  children: [
-                                    Text(
-                                      'Total Profit',
-                                      textAlign: TextAlign.center,
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Text(
-                                        'Rs. ${Provider.of<ShareDataProvider>(context).totalProfit}'),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
+                      myCard(
+                        'Total Profit',
+                        'Rs. ${Provider.of<ShareDataProvider>(context).totalProfit}',
+                        () {},
                       ),
                     ],
                   ),
@@ -300,13 +212,13 @@ class _MainScreenState extends State<MainScreen> {
     );
   }
 
-  Widget myCard(String heading, String value) {
+  Widget myCard(String heading, String value, Function onClick) {
     return Expanded(
       child: Card(
         elevation: 5,
         margin: EdgeInsets.all(15),
         child: InkWell(
-          onTap: () {},
+          onTap: onClick,
           splashColor: Colors.greenAccent,
           child: Center(
             child: Padding(
