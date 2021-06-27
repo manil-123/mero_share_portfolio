@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:mero_share_portfolio/models/share_data.dart';
+import 'package:mero_share_portfolio/utils/databasehelper.dart';
 
 class PieData {
+  DatabaseHelper databaseHelper = DatabaseHelper();
+  List<ShareData> _shareDataList = [];
   static List<Data> data = [
     Data(
       name: 'Red',
@@ -23,6 +27,10 @@ class PieData {
       color: Colors.yellow,
     )
   ];
+
+  void getData() async {
+    _shareDataList = await databaseHelper.getShareDataList();
+  }
 }
 
 class Data {

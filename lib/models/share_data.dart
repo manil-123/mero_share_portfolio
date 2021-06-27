@@ -2,6 +2,7 @@ class ShareData {
   int _id;
   String _scrip;
   String _companyName;
+  String _sectorName;
   int _quantity;
   int _price;
 
@@ -10,6 +11,7 @@ class ShareData {
     this._companyName,
     this._quantity,
     this._price,
+    this._sectorName,
   );
 
   int get price => _price;
@@ -19,6 +21,8 @@ class ShareData {
   String get scrip => _scrip;
 
   String get companyName => _companyName;
+
+  String get sectorName => _sectorName;
 
   int get id => _id;
 
@@ -30,6 +34,7 @@ class ShareData {
     }
     map['scrip'] = _scrip;
     map['companyName'] = _companyName;
+    map['sectorName'] = _sectorName;
     map['quantity'] = _quantity;
     map['price'] = _price;
     return map;
@@ -40,6 +45,7 @@ class ShareData {
     this._id = map['id'];
     this._scrip = map['scrip'];
     this._companyName = map['companyName'];
+    this._sectorName = map['sectorName'];
     this._quantity = map['quantity'];
     this._price = map['price'];
   }

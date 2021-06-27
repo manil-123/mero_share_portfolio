@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:mero_share_portfolio/models/enum.dart';
 import 'package:mero_share_portfolio/models/share_data.dart';
 import 'package:mero_share_portfolio/models/share_data_provider.dart';
-import 'package:mero_share_portfolio/utils/databasehelper.dart';
 import 'package:mero_share_portfolio/models/data_list.dart';
 import 'package:provider/provider.dart';
 
@@ -21,16 +20,17 @@ class _AddDetailsState extends State<AddDetails> {
 
   var selectedMarket = Market.SECONDARY;
   List<String> scripNames = [];
-  // List<String> companyNames = [];
+  List<String> sectorNames = [];
   Map<String, String> scripCompanyName = ListDataModel.scripCompanyNameData;
+  Map<String, String> companySectorName = ListDataModel.companySectorData;
 
   void getData() async {
     for (String key in scripCompanyName.keys) {
       scripNames.add(key);
     }
-    // for (String value in scripCompanyName.values) {
-    //   companyNames.add(value);
-    // }
+    for (String value in companySectorName.values) {
+      sectorNames.add(value);
+    }
   }
 
   @override
@@ -137,10 +137,12 @@ class _AddDetailsState extends State<AddDetails> {
               onPressed: () {
                 setState(() {
                   ShareData shareData = ShareData(
-                      scripNameController.text,
-                      companyNameController.text,
-                      int.parse(quantityController.text),
-                      int.parse(priceController.text));
+                    scripNameController.text,
+                    companyNameController.text,
+                    int.parse(quantityController.text),
+                    int.parse(priceController.text),
+                    'ABC',
+                  );
                   _save(shareData);
                 });
               },

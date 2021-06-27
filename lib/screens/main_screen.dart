@@ -138,29 +138,29 @@ class _MainScreenState extends State<MainScreen> {
             SizedBox(
               height: 20,
             ),
-            Row(
-              children: [
-                Container(
-                  width: MediaQuery.of(context).size.width / 1.5,
-                  padding: EdgeInsets.all(5),
-                  height: 200,
-                  child: PieChart(
-                    PieChartData(
-                      sections: getSections(),
-                    ),
-                  ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(16),
-                      child: IndicatorsWidget(),
-                    ),
-                  ],
-                ),
-              ],
-            ),
+            // Row(
+            //   children: [
+            //     Container(
+            //       width: MediaQuery.of(context).size.width / 1.5,
+            //       padding: EdgeInsets.all(5),
+            //       height: 200,
+            //       child: PieChart(
+            //         PieChartData(
+            //           sections: getSections(),
+            //         ),
+            //       ),
+            //     ),
+            //     Row(
+            //       mainAxisAlignment: MainAxisAlignment.center,
+            //       children: [
+            //         Padding(
+            //           padding: const EdgeInsets.all(16),
+            //           child: IndicatorsWidget(),
+            //         ),
+            //       ],
+            //     ),
+            //   ],
+            // ),
 
             Container(
               width: MediaQuery.of(context).size.width,
