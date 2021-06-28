@@ -33,6 +33,10 @@ class _AddDetailsState extends State<AddDetails> {
     }
   }
 
+  String getSector(String companyName) {
+    return companySectorName[companyName];
+  }
+
   @override
   void initState() {
     // TODO: implement initState
@@ -141,8 +145,9 @@ class _AddDetailsState extends State<AddDetails> {
                     companyNameController.text,
                     int.parse(quantityController.text),
                     int.parse(priceController.text),
-                    'ABC',
+                    getSector(companyNameController.text),
                   );
+                  print(shareData);
                   _save(shareData);
                 });
               },
