@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mero_share_portfolio/models/models.dart';
 import 'package:mero_share_portfolio/models/share_data.dart';
 import 'package:mero_share_portfolio/models/share_data_provider.dart';
-import 'package:mero_share_portfolio/services/data_service.dart';
-import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 
 class ShareDetails extends StatefulWidget {

@@ -8,19 +8,21 @@ const nepseApiURL = 'https://nepse-data-api.herokuapp.com/data/todaysprice';
 //     'https://newweb.nepalstock.com/api/nots/nepse-data/today-price?size=300';
 
 class DataService {
-  // A function that converts a response body into a List<NepseShareDataModel>.
-  List<NepseShareDataModel> parseShareData(String responseBody) {
-    final parsed = jsonDecode(responseBody).cast<Map<String, dynamic>>();
-
-    return parsed
-        .map<NepseShareDataModel>((json) => NepseShareDataModel.fromJson(json))
-        .toList();
-  }
-
   Future<List<NepseShareDataModel>> fetchShareData(http.Client client) async {
     final response = await client.get(Uri.parse(nepseApiURL));
-
-    // Use the compute function to run parseShareData in a separate isolate.
-    return parseShareData(response.body);
+    try {
+      if (response.statusCode == 200) {
+        final parsed =
+            await json.decode(response.body).cast<Map<String, dynamic>>();
+        return parsed
+            .map<NepseShareDataModel>(
+                (json) => NepseShareDataModel.fromJson(json))
+            .toList();
+      } else {
+        return null;
+      }
+    } catch (e) {
+      print(e);
+    }
   }
 }

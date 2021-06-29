@@ -80,7 +80,8 @@ class _DashBoardState extends State<DashBoard> {
                             style: TextStyle(fontSize: 14)),
                         numeric: false),
                   ],
-                  rows: (Provider.of<ShareDataProvider>(context).shareData)
+                  rows: (Provider.of<ShareDataProvider>(context, listen: false)
+                          .shareData)
                       .map(
                         (shareData) => DataRow(
                           cells: [

@@ -17,18 +17,6 @@ class ShareDataProvider extends ChangeNotifier {
   int _saveResult;
   int _deleteResult;
 
-  // void updateShareDataTable() {
-  //   final Future<Database> dbFuture = databaseHelper.initializeDatabase();
-  //   dbFuture.then((database) {
-  //     Future<List<ShareData>> shareDataListFuture =
-  //         databaseHelper.getShareDataList();
-  //     shareDataListFuture.then((shareList) {
-  //       this.shareDataList = shareList;
-  //     });
-  //   });
-  //   notifyListeners();
-  // }
-
   ShareDataProvider() {
     getShareData();
   }

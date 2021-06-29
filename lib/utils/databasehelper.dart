@@ -12,6 +12,7 @@ class DatabaseHelper {
   String colId = 'id';
   String colScrip = 'scrip';
   String colCompanyName = 'companyName';
+  String colSectorName = 'sectorName';
   String colQuantity = 'quantity';
   String colPrice = 'price';
 
@@ -45,7 +46,7 @@ class DatabaseHelper {
 
   void _createDb(Database db, int newVersion) async {
     await db.execute(
-        'CREATE TABLE $shareDataTable($colId INTEGER PRIMARY KEY AUTOINCREMENT,$colScrip TEXT, $colCompanyName TEXT, $colQuantity INTEGER, $colPrice INTEGER)');
+        'CREATE TABLE $shareDataTable($colId INTEGER PRIMARY KEY AUTOINCREMENT,$colScrip TEXT, $colCompanyName TEXT,$colSectorName TEXT, $colQuantity INTEGER, $colPrice INTEGER)');
   }
 
   // Fetch Operation: Get all shareData objects from database
