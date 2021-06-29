@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mero_share_portfolio/models/data_list.dart';
-import 'package:mero_share_portfolio/models/pie_chart_sections.dart';
-import 'package:mero_share_portfolio/models/share_data.dart';
 import 'package:mero_share_portfolio/models/share_data_provider.dart';
-import 'package:mero_share_portfolio/widgets/piechart_indicator.dart';
-// import 'package:pie_chart/pie_chart.dart';
+import 'package:mero_share_portfolio/widgets/pie_chart.dart';
 import 'dashboard.dart';
 import 'package:provider/provider.dart';
-import 'package:fl_chart/fl_chart.dart';
 
 class MainScreen extends StatefulWidget {
   @override
@@ -15,70 +10,6 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  List<String> companyNames = [];
-  Map<String, String> companySectorData = ListDataModel.companySectorData;
-  List<ShareData> shareDataList = [];
-  Map<String, double> dataMap = Map();
-  List<Color> colorList = [];
-  // Colors.red,
-  // Colors.yellow,
-  // Colors.green,
-  // Colors.redAccent,
-  // Colors.blueGrey,
-  // Colors.purple,
-  // Colors.black12,
-  // Colors.greenAccent,
-  // Colors.pink,
-
-  // Widget pieChart() {
-  //   return PieChart(
-  //     dataMap: dataMap,
-  //     initialAngleInDegree: 0,
-  //     animationDuration: Duration(milliseconds: 800),
-  //     chartType: ChartType.disc,
-  //     chartRadius: MediaQuery.of(context).size.width / 2.2,
-  //     ringStrokeWidth: 32,
-  //     colorList: colorList,
-  //     chartLegendSpacing: 20,
-  //     centerText: "Stocks",
-  //     legendOptions: LegendOptions(
-  //       showLegendsInRow: false,
-  //       legendPosition: LegendPosition.right,
-  //       showLegends: true,
-  //       legendShape: BoxShape.circle,
-  //       legendTextStyle: TextStyle(
-  //         fontWeight: FontWeight.bold,
-  //         fontSize: 8,
-  //         color: Colors.black87,
-  //       ),
-  //     ),
-  //     chartValuesOptions: ChartValuesOptions(
-  //       showChartValueBackground: true,
-  //       showChartValues: false,
-  //       showChartValuesInPercentage: true,
-  //       showChartValuesOutside: false,
-  //       decimalPlaces: 1,
-  //     ),
-  //   );
-  // }
-
-  // Future buildPieChart() {
-  //   this.shareDataList =
-  //       Provider.of<ShareDataProvider>(context, listen: false).shareData;
-  //   if (shareDataList == []) {
-  //     dataMap.putIfAbsent("null", () => 1);
-  //     colorList.add(Colors.red);
-  //   }
-  //   print("dataMap $dataMap");
-  //   return null;
-  // }
-
-  // @override
-  // void initState() {
-  //   buildPieChart();
-  //   super.initState();
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -185,7 +116,14 @@ class _MainScreenState extends State<MainScreen> {
                       myCard(
                         'Overall Stocks',
                         '${Provider.of<ShareDataProvider>(context).shareDataCount}',
-                        () {},
+                        () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => PieChartWidget(),
+                            ),
+                          );
+                        },
                       ),
                     ],
                   ),
